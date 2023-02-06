@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/screens/main/components/main_Desktop.dart';
 import '../../responsive.dart';
 
 class MainScreen extends StatelessWidget {
@@ -11,48 +12,60 @@ class MainScreen extends StatelessWidget {
       body: Responsive(
         // Let's work on our mobile part
         mobile: Container(
-          color: Colors.red,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF3366FF),
+                Color(0xFF00CCFF),
+              ],
+              begin: FractionalOffset(0.0, 0.0),
+              end: FractionalOffset(0.0, 0.5),
+              stops: [0.0, 1.0],
+              tileMode: TileMode.clamp,
+            ),
+          ),
+          child: const GradientText(
+            gradient: LinearGradient(colors: [
+              //Gradient
+              Colors.white,
+              Colors.black,
+            ]),
+            text: "data",
+          ),
         ),
-        tablet: Row(
-          children: [
-            Expanded(
-              flex: 6,
-              child: Container(
-                color: Colors.blue,
-              ),
-            ),
-            Expanded(
-              flex: 9,
-              child: Container(
-                color: Colors.red,
-              ),
-            ),
-          ],
-        ),
-        desktop: Row(
-          children: [
-            // Once our width is less then 1300 then it start showing errors
-            // Now there is no error if our width is less then 1340
-            Expanded(
-              flex: size.width > 1340 ? 2 : 4,
-              child: Container(
-                color: Colors.green,
-              ),
-            ),
-            Expanded(
-              flex: size.width > 1340 ? 3 : 5,
-              child: Container(
-                color: Colors.grey,
-              ),
-            ),
-            Expanded(
-              flex: size.width > 1340 ? 8 : 10,
-              child: Container(
-                color: Colors.black,
-              ),
-            ),
-          ],
-        ),
+        desktop: const MainDesktop(),
+      ),
+    );
+  }
+}
+
+class GradientText extends StatelessWidget {
+  const GradientText({
+    Key? key,
+    required this.gradient,
+    this.style,
+    required this.text,
+  }) : super(key: key);
+  final Gradient gradient;
+  final TextStyle? style;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return ShaderMask(
+      blendMode: BlendMode.srcIn,
+      shaderCallback: (bounds) =>
+          // const LinearGradient(colors: [
+          //   //Gradient
+          //   Colors.white,
+          //   Colors.black,
+          // ])
+          gradient.createShader(
+        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+      ),
+      child: Text(
+        text,
+        style: style,
       ),
     );
   }

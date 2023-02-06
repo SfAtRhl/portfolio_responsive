@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/screens/about/about_screen.dart';
 import 'package:portfolio/screens/contact/contact_screen.dart';
+import 'package:portfolio/screens/project/project_screen.dart';
+import 'package:portfolio/screens/teck/teck_screen.dart';
 
 import 'screens/main/main_screen.dart';
 
@@ -22,6 +24,10 @@ Route<dynamic> routes(RouteSettings settings) {
       return _getPageRoute(AboutScreen(), settings);
     case "/Contact":
       return _getPageRoute(ContactScreen(), settings);
+    case "/Tech":
+      return _getPageRoute(TechScreen(), settings);
+    case "/Project":
+      return _getPageRoute(ProjectScreen(), settings);
     // case ContactRoute:
     //   return _getPageRoute(const ContactView(), settings.name as String);
     default:
