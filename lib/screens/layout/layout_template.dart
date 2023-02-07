@@ -106,18 +106,8 @@ class LayoutTemplate extends StatelessWidget {
                                 for (int i = 1; i <= 3; i++)
                                   socialIcom(
                                     num: i.toString(),
+                                    color: iconColor[i-1],
                                   ),
-                                // Padding(
-                                //   padding: EdgeInsets.symmetric(
-                                //       horizontal:
-                                //           getProportionateScreenWidth(10)),
-                                //   child: SvgPicture.asset(
-                                //     "assets/icons/2.svg",
-                                //   ),
-                                // ),
-                                // SvgPicture.asset(
-                                //   "assets/icons/3.svg",
-                                // ),
                               ],
                             ),
                           ),
@@ -152,8 +142,10 @@ class socialIcom extends StatefulWidget {
   const socialIcom({
     Key? key,
     required this.num,
+    required this.color,
   }) : super(key: key);
   final String num;
+  final Color color;
 
   @override
   State<socialIcom> createState() => _socialIcomState();
@@ -167,6 +159,7 @@ class _socialIcomState extends State<socialIcom> {
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenHeight(5)),
       child: InkWell(
+        hoverColor: Colors.transparent,
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
         onHover: ((value) {
@@ -177,7 +170,7 @@ class _socialIcomState extends State<socialIcom> {
         onTap: () {},
         child: SvgPicture.asset(
           "assets/icons/${widget.num}.svg",
-          color: isHover ? kSolidHeading : null,
+          color: isHover ? widget.color : null,
         ),
       ),
     );

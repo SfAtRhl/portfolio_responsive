@@ -27,13 +27,9 @@ class TechDesktop extends StatelessWidget {
                       "My Tech Stack",
                       style: kHeaderStyler,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          top: getProportionateScreenHeight(10)),
-                      child: Text(
-                        " Technologies I’ve been working with recently",
-                        style: kUnderHeaderStyle,
-                      ),
+                    Text(
+                      " Technologies I’ve been working with recently",
+                      style: kUnderHeaderStyle,
                     ),
                   ],
                 ),

@@ -27,13 +27,9 @@ class ProjectDesktop extends StatelessWidget {
                       "Projects",
                       style: kHeaderStyler,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          top: getProportionateScreenHeight(10)),
-                      child: Text(
-                        "Things I’ve built so far",
-                        style: kUnderHeaderStyle,
-                      ),
+                    Text(
+                      "Things I’ve built so far",
+                      style: kUnderHeaderStyle,
                     ),
                   ],
                 ),
@@ -43,8 +39,8 @@ class ProjectDesktop extends StatelessWidget {
               child: Wrap(
                 // runAlignment : WrapAlignment.center,
                 // crossAxisAlignment : WrapCrossAlignment.center,
-                spacing: 50.0,
-                runSpacing: 50.0,
+                spacing: getProportionateScreenWidth(50),
+                runSpacing: getProportionateScreenHeight(50),
                 children: [
                   for (int i = 1; i <= 6; i++)
                     Stack(
@@ -69,30 +65,59 @@ class ProjectDesktop extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.only(
                               top: getProportionateScreenWidth(180),
-                              right: getProportionateScreenWidth(28),
-                              left: getProportionateScreenWidth(28),
+                              right: getProportionateScreenWidth(15),
+                              left: getProportionateScreenWidth(15),
                             ),
                             child: Column(
                               children: [
-                                 Text("Project Tile goes here",style: kHeaderProjectStyle,),
-                                 Text(
-                                    "This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content",style: kProjectStyle,),
-                                const Text(
-                                    "Tech stack : HTML , JavaScript, SASS, React"),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        SvgPicture.asset("icons/link.svg"),
-                                         Text("Live Preview",style: kProjectStyle,)
+                                Text(
+                                  "Project Tile goes here",
+                                  style: kHeaderProjectStyle,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical:
+                                          getProportionateScreenHeight(15)),
+                                  child: Text(
+                                    "This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content",
+                                    style: kProjectStyle,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical:
+                                          getProportionateScreenHeight(15)),
+                                  child: RichText(
+                                    text: TextSpan(
+                                      style: kProjectStyle,
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: 'Tech stack : ',
+                                          style: TextStyle(
+                                            fontSize:
+                                                getProportionateScreenWidth(12),
+                                            fontWeight: FontWeight.w700,
+                                            color: kDarkColor,
+                                          ),
+                                        ),
+                                        const TextSpan(
+                                            text:
+                                                'HTML , JavaScript, SASS, React'),
                                       ],
                                     ),
-                                    Row(
-                                      children: [
-                                        SvgPicture.asset("icons/github.svg"),
-                                         Text("View Code",style: kProjectStyle,)
-                                      ],
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: const [
+                                    linkView(
+                                      path: 'link',
+                                      title: 'Live Preview',
+                                    ),
+                                    linkView(
+                                      path: 'github',
+                                      title: 'View Github',
                                     ),
                                   ],
                                 )
@@ -109,7 +134,7 @@ class ProjectDesktop extends StatelessWidget {
                             height: getProportionateScreenHeight(200),
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage('images/$i.png'),
+                                image: AssetImage('assets/images/$i.png'),
                                 fit: BoxFit.fill,
                               ),
                               borderRadius: const BorderRadius.only(
@@ -137,6 +162,66 @@ class ProjectDesktop extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class linkView extends StatefulWidget {
+  const linkView({
+    Key? key,
+    required this.path,
+    required this.title,
+  }) : super(key: key);
+
+  final String path;
+  final String title;
+
+  @override
+  State<linkView> createState() => _linkViewState();
+}
+
+class _linkViewState extends State<linkView> {
+  bool isHover = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      onHover: ((value) {
+        setState(() {
+          isHover = value;
+        });
+      }),
+      child: Row(
+        children: [
+          SvgPicture.asset(
+            "assets/icons/${widget.path}.svg",
+            color: isHover ? null : kDarkContent,
+          ),
+          SizedBox(
+            width: getProportionateScreenWidth(5),
+          ),
+          Container(
+            padding: const EdgeInsets.only(
+              bottom: 2, // Space between underline and text
+            ),
+            decoration: BoxDecoration(
+                border: Border(
+                    bottom: BorderSide(
+              color: isHover ? kDarkColor : kDarkContent,
+              width: 1.0, // Underline thickness
+            ))),
+            child: Text(
+              // " Live Preview",
+              widget.title,
+              style: isHover ? kProjectBoldStyle : kProjectStyle,
+            ),
+          )
+        ],
       ),
     );
   }

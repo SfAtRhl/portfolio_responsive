@@ -33,7 +33,7 @@ class AboutDesktop extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           vertical: getProportionateScreenHeight(10)),
                       child: Text(
-                        "The Generator App is an online tool that helps you to export ready-made templates ready to work as your future website. It helps you to combine slides, panels and other components and export it as a set of static files: HTML/CSS/JS.",
+                        aboutText,
                         style: kUnderHeaderStyle,
                       ),
                     ),
@@ -42,7 +42,8 @@ class AboutDesktop extends StatelessWidget {
                       style: kHeaderStyler,
                     ),
                     SizedBox(
-                      height: 250,
+                      height: Experiences.length *
+                          getProportionateScreenHeight(100),
                       child: ListView.separated(
                         itemCount: Experiences.length,
                         separatorBuilder: (BuildContext context, int index) =>
@@ -68,7 +69,8 @@ class AboutDesktop extends StatelessWidget {
                       style: kHeaderStyler,
                     ),
                     SizedBox(
-                      height: 70,
+                      height:
+                          Education.length * getProportionateScreenHeight(100),
                       child: ListView.separated(
                         itemCount: Education.length,
                         separatorBuilder: (BuildContext context, int index) =>
@@ -105,7 +107,7 @@ class Experience extends StatelessWidget {
     Key? key,
     required this.function,
     required this.startup,
-    required this.location,
+    this.location = "",
     required this.periode,
     required this.type,
   }) : super(key: key);
@@ -114,7 +116,7 @@ class Experience extends StatelessWidget {
 
   final String startup;
 
-  final String location;
+  final String? location;
   final String periode;
 
   @override
@@ -155,10 +157,11 @@ class Experience extends StatelessWidget {
                   startup,
                   style: kUnderStyle,
                 ),
-                SvgPicture.asset("assets/icons/location.svg"),
+                if (location!.isNotEmpty)
+                  SvgPicture.asset("assets/icons/location.svg"),
                 Text(
                   // "JBengaluru",
-                  location,
+                  location ?? "",
                   style: kUnderStyle,
                 ),
               ],

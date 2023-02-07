@@ -4,50 +4,44 @@ class Exp {
 
   final String startup;
 
-  final String location;
+  final String? location;
   final String periode;
 
   Exp(
       {required this.function,
       required this.type,
       required this.startup,
-      required this.location,
+      this.location = "",
       required this.periode});
 }
 
 var Experiences = [
   Exp(
-    function: "function",
-    startup: "startup",
-    location: "location",
-    periode: "periode",
-    type: 'type',
+    function: "Flutter Developper",
+    startup: "CodingArt",
+    location: "Tilila",
+    periode: "20 November - 20 December",
+    type: 'Intership',
   ),
   Exp(
-      function: "function",
-      type: 'type',
-      startup: "startup",
-      location: "location",
-      periode: "periode"),
+      function: "Function",
+      type: 'Intership',
+      startup: "Choose Salon",
+      location: "Tikiouin",
+      periode: "20 November - 20 December"),
   Exp(
-      function: "function",
-      type: 'type',
-      startup: "startup",
-      location: "location",
-      periode: "periode"),
-  Exp(
-      function: "function",
-      type: 'type',
-      startup: "startup",
-      location: "location",
-      periode: "periode"),
+      function: "Function",
+      type: 'Intership',
+      startup: "Qualiprim",
+      location: "Ait Amira",
+      periode: "20 November - 20 December"),
 ];
 var Education = [
   Exp(
-    function: "function",
-    startup: "startup",
-    location: "location",
-    periode: "periode",
-    type: 'type',
+    function: "Bachelor in Electronics & Communication",
+    startup: "Higher School of Technology Agadir",
+    // location: "location",
+    periode: "20 November - 20 December",
+    type: 'Full Time',
   ),
 ];
