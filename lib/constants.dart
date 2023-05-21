@@ -20,7 +20,7 @@ const kDefaultPadding = 20.0;
 
 var kHeaderStyler = GoogleFonts.poppins(
   textStyle: TextStyle(
-    fontSize: getProportionateScreenWidth(42),
+    fontSize: calculateTextSize(42),
     fontWeight: FontWeight.w700,
     color: kSolidHeading,
     // height: getProportionateScreenHeight(52),
@@ -28,53 +28,53 @@ var kHeaderStyler = GoogleFonts.poppins(
 );
 var kNavStyler = GoogleFonts.acme(
     textStyle: TextStyle(
-  fontSize: getProportionateScreenWidth(20),
+  fontSize: calculateTextSize(20),
   fontWeight: FontWeight.w500,
   color: kDarkContent,
   // height: getProportionateScreenHeight(52),
 ));
 var kNavStylerHover = GoogleFonts.acme(
     textStyle: TextStyle(
-  fontSize: getProportionateScreenWidth(20),
+  fontSize: calculateTextSize(20),
   fontWeight: FontWeight.w600,
   color: kDarkColor,
   // height: getProportionateScreenHeight(52),
 ));
 var kUnderHeaderStyle = GoogleFonts.poppins(
   textStyle: TextStyle(
-    fontSize: getProportionateScreenWidth(20),
+    fontSize: calculateTextSize(20),
     fontWeight: FontWeight.w400,
     color: kDarkContent,
     // height: getProportionateScreenHeight(26),
   ),
 );
 var kUnderStyle = TextStyle(
-  fontSize: getProportionateScreenWidth(12),
+  fontSize: calculateTextSize(12),
   fontWeight: FontWeight.w500,
   color: kLightContent,
   // height: getProportionateScreenHeight(26),
 );
 var kButtonStyle = TextStyle(
-  fontSize: getProportionateScreenWidth(9),
+  fontSize: calculateTextSize(9),
   fontWeight: FontWeight.w600,
   color: kButtonText,
   // height: getProportionateScreenHeight(26),
 );
 var kHeaderProjectStyle = TextStyle(
-  fontSize: getProportionateScreenWidth(18),
+  fontSize: calculateTextSize(18),
   fontWeight: FontWeight.w700,
   color: kDarkColor,
   // height: getProportionateScreenHeight(26),
 );
 var kProjectStyle = TextStyle(
-  fontSize: getProportionateScreenWidth(12),
+  fontSize: calculateTextSize(12),
   fontWeight: FontWeight.w300,
   color: kDarkContent,
   // decoration: TextDecoration.underline,
   // height: getProportionateScreenHeight(26),
 );
 var kProjectBoldStyle = TextStyle(
-  fontSize: getProportionateScreenWidth(12),
+  fontSize: calculateTextSize(12),
   fontWeight: FontWeight.w700,
   color: kDarkColor,
   // decoration: TextDecoration.underline,
@@ -89,3 +89,11 @@ var iconColor = [
   const Color(0xFF1DA1F2),
   const Color(0xFF0077B5),
 ];
+var socialMedia = [
+  "https://github.com/SfAtRhl",
+  "",
+  "https://www.linkedin.com/in/soufyane-ait-rehail/",
+];
+
+var linkedinImage =
+    "https://media.licdn.com/dms/image/D4E03AQGPzJj2s84EnQ/profile-displayphoto-shrink_800_800/0/1673958003081?e=2147483647&v=beta&t=oaMIendwoW1HXGU87yl875L6LV2W7iV5ehtflZteG5A";

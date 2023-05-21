@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/size_config.dart';
 
-class MainDesktop extends StatelessWidget {
-  const MainDesktop({super.key});
+class MainMobile extends StatelessWidget {
+  const MainMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,31 +13,27 @@ class MainDesktop extends StatelessWidget {
       padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(150),
           vertical: getProportionateScreenHeight(100)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RichText(
             text: TextSpan(
               style: kHeaderStyler,
-              children: const <TextSpan>[
+              children: <TextSpan>[
                 TextSpan(
                   text: 'Hi 👋,\n',
-                  // style: TextStyle(
-                  //   fontSize: getProportionateScreenWidth(52),
-                  //   fontWeight: FontWeight.w700,
-                  //   color: kDarkColor,
-                  // ),
+                  style: kHeaderStyler,
                 ),
-                TextSpan(text: 'My name is\n'),
-                TextSpan(text: 'Soufyane\n'),
-                TextSpan(text: 'I build things for\n'),
-                TextSpan(text: 'web && mobile app'),
+                const TextSpan(text: 'My name is\n'),
+                const TextSpan(text: 'Soufyane\n'),
+                const TextSpan(text: 'I build things for\n'),
+                const TextSpan(text: 'web && mobile app'),
               ],
             ),
           ),
           Container(
             height: getProportionateScreenHeight(349),
-            width: getProportionateScreenWidth(349),
+            width: getProportionateScreenHeight(349),
             alignment: Alignment.center,
             decoration: const BoxDecoration(
                 shape: BoxShape.circle,
@@ -49,15 +45,12 @@ class MainDesktop extends StatelessWidget {
                       Color(0xFF00C0FD),
                     ])),
             child: Container(
-              width: getProportionateScreenWidth(330),
+              width: getProportionateScreenHeight(330),
               height: getProportionateScreenHeight(330),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   image: NetworkImage(linkedinImage),
-
-                  // ExactAssetImage('assets/images/2.png'),
-
                   fit: BoxFit.fitHeight,
                 ),
               ),

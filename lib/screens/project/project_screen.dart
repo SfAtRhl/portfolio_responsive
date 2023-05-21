@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/screens/project/components/Project_Desktop.dart';
 import '../../responsive.dart';
+import 'components/Project_Mobile.dart';
 
 class ProjectScreen extends StatelessWidget {
   static String routeName = "/Project";
+
+  const ProjectScreen({super.key});
   @override
   Widget build(BuildContext context) {
     // It provide us the width and height
-    Size size = MediaQuery.of(context).size;
-    return Scaffold(
+    // Size size = MediaQuery.of(context).size;
+    return const Scaffold(
       body: Responsive(
         // Let's work on our mobile part
-        // mobile: Container(
+        mobile: ProjectMobile(),
+        // Container(
         //   decoration: const BoxDecoration(
         //     gradient: LinearGradient(
         //       colors: [
@@ -39,7 +43,7 @@ class ProjectScreen extends StatelessWidget {
         //     ),
         //   ),
         // ),
-        desktop: const ProjectDesktop(),
+        desktop: ProjectDesktop(),
       ),
     );
   }

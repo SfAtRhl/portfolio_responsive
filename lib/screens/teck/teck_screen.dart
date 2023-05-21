@@ -11,25 +11,9 @@ class TechScreen extends StatelessWidget {
     return Scaffold(
       body: Responsive(
           // Let's work on our mobile part
-          mobile: Container(
-            color: Colors.blue.shade800,
-          ),
-          tablet: Row(
-            children: [
-              Expanded(
-                flex: 6,
-                child: Container(
-                  color: Colors.blue.shade900,
-                ),
-              ),
-              Expanded(
-                flex: 9,
-                child: Container(
-                  color: Colors.red.shade900,
-                ),
-              ),
-            ],
-          ),
+          // mobile: Container(
+          //   color: Colors.blue.shade800,
+          // ),
           desktop: TechDesktop(),),
     );
   }

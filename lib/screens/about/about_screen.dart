@@ -11,9 +11,9 @@ class AboutScreen extends StatelessWidget {
     return Scaffold(
       body: Responsive(
         // Let's work on our mobile part
-        mobile: Container(
-          color: Colors.blue.shade800,
-        ),
+        // mobile: Container(
+        //   color: Colors.blue.shade800,
+        // ),
         desktop: const AboutDesktop(),
       ),
     );

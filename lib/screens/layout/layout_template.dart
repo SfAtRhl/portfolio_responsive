@@ -7,6 +7,7 @@ import 'package:portfolio/screens/main/main_screen.dart';
 import 'package:portfolio/screens/project/project_screen.dart';
 import 'package:portfolio/screens/teck/teck_screen.dart';
 import 'package:portfolio/size_config.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../components/center_view.dart';
 import '../../locator.dart';
@@ -69,13 +70,15 @@ class LayoutTemplate extends StatelessWidget {
                   //         )),
                   //   ),
                   // ),
-
+                  const Flexible(
+                    flex: 2,
+                    child: SizedBox(),
+                  ),
                   if (!Responsive.isMobile(context))
-                    SizedBox(
-                      width: getProportionateScreenWidth(
-                          Responsive.isDesktop(context) ? 750 : 1200),
+                    Flexible(
+                      flex: Responsive.isDesktop(context) ? 3 : 6,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Navigator(
                             title: 'Home',
@@ -106,7 +109,7 @@ class LayoutTemplate extends StatelessWidget {
                                 for (int i = 1; i <= 3; i++)
                                   socialIcom(
                                     num: i.toString(),
-                                    color: iconColor[i-1],
+                                    color: iconColor[i - 1], url: socialMedia[i - 1],
                                   ),
                               ],
                             ),
@@ -143,9 +146,11 @@ class socialIcom extends StatefulWidget {
     Key? key,
     required this.num,
     required this.color,
+    required this.url,
   }) : super(key: key);
   final String num;
   final Color color;
+  final String url;
 
   @override
   State<socialIcom> createState() => _socialIcomState();
@@ -167,7 +172,16 @@ class _socialIcomState extends State<socialIcom> {
             isHover = value;
           });
         }),
-        onTap: () {},
+        onTap: () async {
+          // const url = "https://pub.dev/packages/url_launcher/example";
+          if (await canLaunch(widget.url)) {
+            await launch(
+              widget.url,
+            );
+          } else {
+            throw 'Could not launch ${widget.url}';
+          }
+        },
         child: SvgPicture.asset(
           "assets/icons/${widget.num}.svg",
           color: isHover ? widget.color : null,
@@ -195,6 +209,8 @@ class _NavigatorState extends State<Navigator> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     return InkWell(
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,

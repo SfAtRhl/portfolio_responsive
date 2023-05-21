@@ -132,8 +132,8 @@ class Experience extends StatelessWidget {
               style: kUnderHeaderStyle,
             ),
             Container(
-                width: getProportionateScreenWidth(84),
-                height: getProportionateScreenHeight(24),
+                width: getProportionateScreenWidth(104),
+                height: getProportionateScreenHeight(34),
                 decoration: BoxDecoration(
                     color: kButtonSuccess,
                     borderRadius: BorderRadius.circular(25.0)),
