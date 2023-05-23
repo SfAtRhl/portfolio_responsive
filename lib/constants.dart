@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio/size_config.dart';
+
+import 'size_config.dart';
+// import 'package:portfolio/size_config.dart';
 
 // All of our constant stuff
+// SizeConfig().init(context);
 
 const kSolidHeading = Color(0xFF42446E);
 const kDarkContent = Color(0xFF666666);
 const kSolidHeadingDarkmode = Color(0xFFCCCCCC);
 const kLightContent = Color(0xFFA7A7A7);
 const kDarkColor = Color(0xFF191919);
+
+const kStrongDarkColor = Color(0xFF000000);
+
 const kButtonText = Color(0xFF018C0F);
 const kButtonSuccess = Color(0xFFD7FFE0);
 const kGradientHeading = LinearGradient(colors: [
@@ -20,11 +26,16 @@ const kDefaultPadding = 20.0;
 
 var kHeaderStyler = GoogleFonts.poppins(
   textStyle: TextStyle(
-    fontSize: calculateTextSize(42),
+    fontSize: calculateTextSize(35),
     fontWeight: FontWeight.w700,
     color: kSolidHeading,
     // height: getProportionateScreenHeight(52),
   ),
+);
+var kTechStack = TextStyle(
+  fontSize: getProportionateScreenWidth(12),
+  fontWeight: FontWeight.w700,
+  color: kDarkColor,
 );
 var kNavStyler = GoogleFonts.acme(
     textStyle: TextStyle(
@@ -36,13 +47,13 @@ var kNavStyler = GoogleFonts.acme(
 var kNavStylerHover = GoogleFonts.acme(
     textStyle: TextStyle(
   fontSize: calculateTextSize(20),
-  fontWeight: FontWeight.w600,
-  color: kDarkColor,
+  fontWeight: FontWeight.w500,
+  color: kStrongDarkColor,
   // height: getProportionateScreenHeight(52),
 ));
 var kUnderHeaderStyle = GoogleFonts.poppins(
   textStyle: TextStyle(
-    fontSize: calculateTextSize(20),
+    fontSize: calculateTextSize(18),
     fontWeight: FontWeight.w400,
     color: kDarkContent,
     // height: getProportionateScreenHeight(26),
@@ -91,7 +102,7 @@ var iconColor = [
 ];
 var socialMedia = [
   "https://github.com/SfAtRhl",
-  "",
+  "https://twitter.com/",
   "https://www.linkedin.com/in/soufyane-ait-rehail/",
 ];
 

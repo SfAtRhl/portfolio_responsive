@@ -42,8 +42,10 @@ class TechDesktop extends StatelessWidget {
                 spacing: 50.0,
                 runSpacing: 50.0,
                 children: [
-                  for (int i = 1; i <= 10; i++)
-                    SvgPicture.asset("assets/icons/technologies/$i.svg"),
+                  for (int i = 1; i <= 12; i++)
+                    SvgPicture.asset("assets/icons/technologies/$i.svg"
+                    ,height: getProportionateScreenWidth(100),
+                    width: getProportionateScreenWidth(100),),
                 ],
               ),
             ),

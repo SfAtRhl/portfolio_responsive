@@ -109,7 +109,8 @@ class LayoutTemplate extends StatelessWidget {
                                 for (int i = 1; i <= 3; i++)
                                   socialIcom(
                                     num: i.toString(),
-                                    color: iconColor[i - 1], url: socialMedia[i - 1],
+                                    color: iconColor[i - 1],
+                                    url: socialMedia[i - 1],
                                   ),
                               ],
                             ),
@@ -217,7 +218,8 @@ class _NavigatorState extends State<Navigator> {
       splashColor: Colors.transparent,
       child: Text(
         widget.title,
-        style: isHover ? kNavStylerHover : kNavStyler,
+        style: isHover ? 
+        kNavStylerHover : kNavStyler,
       ),
       onHover: (val) {
         setState(() {
