@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/constants.dart';
@@ -9,6 +11,7 @@ import 'package:portfolio/screens/teck/teck_screen.dart';
 import 'package:portfolio/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../components/Drawer.dart';
 import '../../components/center_view.dart';
 import '../../locator.dart';
 import '../../responsive.dart';
@@ -17,19 +20,15 @@ import '../../services/navigation_service.dart';
 class LayoutTemplate extends StatelessWidget {
   const LayoutTemplate({Key? key, required this.child}) : super(key: key);
   final Widget child;
+    static GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       key: scaffoldKey,
-      drawer: Responsive.isMobile(context)
-          ? Container(
-              color: Colors.red,
-              width: 300,
-            )
-          : null,
+      drawer: Responsive.isMobile(context) ? const DrawerWidget() : null,
       backgroundColor: Colors.white,
       body: CenteredView(
         child: Column(
@@ -80,23 +79,23 @@ class LayoutTemplate extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Navigator(
+                          NavigatorWidget(
                             title: 'Home',
                             path: MainScreen.routeName,
                           ),
-                          Navigator(
+                          NavigatorWidget(
                             title: 'About',
                             path: AboutScreen.routeName,
                           ),
-                          Navigator(
+                          NavigatorWidget(
                             title: 'Tech Stack',
                             path: TechScreen.routeName,
                           ),
-                          Navigator(
+                          NavigatorWidget(
                             title: 'Projects',
                             path: ProjectScreen.routeName,
                           ),
-                          Navigator(
+                          NavigatorWidget(
                             title: 'Contact',
                             path: ContactScreen.routeName,
                           ),
@@ -119,15 +118,18 @@ class LayoutTemplate extends StatelessWidget {
                       ),
                     ),
                   if (Responsive.isMobile(context))
-                    InkWell(
-                      child: Container(
-                        color: Colors.black,
-                        height: 30,
-                        width: 30,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                        child: const Icon(
+                          Icons.menu_rounded,
+                          color: kSolidHeading,
+                          size: 35,
+                        ),
+                        onTap: () {
+                          scaffoldKey.currentState!.openDrawer();
+                        },
                       ),
-                      onTap: () {
-                        scaffoldKey.currentState!.openDrawer();
-                      },
                     ),
                 ],
               ),
@@ -174,7 +176,6 @@ class _socialIcomState extends State<socialIcom> {
           });
         }),
         onTap: () async {
-          // const url = "https://pub.dev/packages/url_launcher/example";
           if (await canLaunch(widget.url)) {
             await launch(
               widget.url,
@@ -192,8 +193,8 @@ class _socialIcomState extends State<socialIcom> {
   }
 }
 
-class Navigator extends StatefulWidget {
-  const Navigator({
+class NavigatorWidget extends StatefulWidget {
+  const NavigatorWidget({
     Key? key,
     required this.title,
     required this.path,
@@ -202,10 +203,10 @@ class Navigator extends StatefulWidget {
   final String path;
 
   @override
-  State<Navigator> createState() => _NavigatorState();
+  State<NavigatorWidget> createState() => _NavigatorWidgetState();
 }
 
-class _NavigatorState extends State<Navigator> {
+class _NavigatorWidgetState extends State<NavigatorWidget> {
   bool isHover = false;
 
   @override
@@ -218,8 +219,17 @@ class _NavigatorState extends State<Navigator> {
       splashColor: Colors.transparent,
       child: Text(
         widget.title,
-        style: isHover ? 
-        kNavStylerHover : kNavStyler,
+        style: isHover
+            ? Responsive.isTablet(context)
+                ? kNavStylerHover.copyWith(
+                    fontSize: calculateTextSize(15),
+                  )
+                : kNavStylerHover
+            : Responsive.isTablet(context)
+                ? kNavStyler.copyWith(
+                    fontSize: calculateTextSize(15),
+                  )
+                : kNavStyler,
       ),
       onHover: (val) {
         setState(() {
@@ -228,6 +238,9 @@ class _NavigatorState extends State<Navigator> {
       },
       onTap: () {
         locator<NavigationService>().navigateTo(widget.path);
+       LayoutTemplate. scaffoldKey.currentState!.closeDrawer();
+      // Navigator.pop(context);
+
       },
     );
   }

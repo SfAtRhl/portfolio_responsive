@@ -25,13 +25,16 @@ class SizeConfig {
     refSize = sqrt(pow(diagonalPixels, 2) /
         (1 + pow(MediaQuery.of(context).textScaleFactor - 1, 2)));
   }
+
+//    bool isTablet(BuildContext context) =>
+//       screenWidth < 1100 &&
+//     screenWidth >= 650;
+  
+
+//  bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 650;
+
 }
-
-bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 650;
-
-bool isTablet(BuildContext context) =>
-    MediaQuery.of(context).size.width < 1100 &&
-    MediaQuery.of(context).size.width >= 650;
+  
 
 // bool isDesktop(BuildContext context) =>
 //     MediaQuery.of(context).size.width >= 1100;

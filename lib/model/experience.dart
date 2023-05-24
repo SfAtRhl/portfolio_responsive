@@ -17,31 +17,39 @@ class Exp {
 
 var Experiences = [
   Exp(
+    function: "Flutter/Laravel Developper",
+    startup: "Freelance",
+    // location: "Tilila",
+    periode: "Mar 2023 - Present",
+    type: 'Full Time',
+  ),
+  Exp(
+    function: "Flutter/Laravel Developper",
+    startup: "Metama",
+    location: "Tilila, Agadir",
+    periode: "Mar 2023 - May 2023",
+    type: 'Part-Time',
+  ),
+  Exp(
     function: "Flutter Developper",
-    startup: "CodingArt",
-    location: "Tilila",
-    periode: "20 November - 20 December",
+    startup: "Tweadup",
+    location: "Dakhla, Agadir",
+    periode: "Jan 2023 - Feb 2023",
     type: 'Intership',
   ),
   Exp(
-      function: "Function",
-      type: 'Intership',
-      startup: "Choose Salon",
-      location: "Tikiouin",
-      periode: "20 November - 20 December"),
-  Exp(
-      function: "Function",
-      type: 'Intership',
-      startup: "Qualiprim",
-      location: "Ait Amira",
-      periode: "20 November - 20 December"),
+    function: "Flutter Developper",
+    startup: "CodingArt",
+    location: "Tilila, Agadir",
+    periode: "Sep 2022 - Dec 2022",
+    type: 'Intership',
+  ),
 ];
 var Education = [
   Exp(
-    function: "Bachelor in Electronics & Communication",
-    startup: "Higher School of Technology Agadir",
-    // location: "location",
-    periode: "20 November - 20 December",
+    function: "Associate's degree of Computer science",
+    startup: "Higher School of Technology-Agadir",
+    periode: "2020 - 2022",
     type: 'Full Time',
   ),
 ];

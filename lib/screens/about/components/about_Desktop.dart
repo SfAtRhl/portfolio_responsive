@@ -4,6 +4,7 @@ import 'package:portfolio/constants.dart';
 import 'package:portfolio/size_config.dart';
 
 import '../../../model/experience.dart';
+import '../../../responsive.dart';
 
 class AboutDesktop extends StatelessWidget {
   const AboutDesktop({super.key});
@@ -25,22 +26,36 @@ class AboutDesktop extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "About Me",
-                      style: kHeaderStyler,
-                    ),
+                    Text("About Me",
+                        style: Responsive.isTablet(context)
+                            ? kHeaderStyler.copyWith(
+                                fontSize: calculateTextSize(30),
+                              )
+                            : Responsive.isMobile(context)
+                            ? kHeaderStyler.copyWith(
+                                fontSize: calculateTextSize(25),
+                              ): kHeaderStyler),
                     Padding(
                       padding: EdgeInsets.symmetric(
                           vertical: getProportionateScreenHeight(10)),
-                      child: Text(
-                        aboutText,
-                        style: kUnderHeaderStyle,
-                      ),
+                      child: Text(aboutText,
+                          style: Responsive.isMobile(context)
+                              ? kUnderHeaderStyle.copyWith(
+                                  fontSize: calculateTextSize(12),
+                                )
+                              : kUnderHeaderStyle
+                          // kUnderHeaderStyle,
+                          ),
                     ),
-                    Text(
-                      "Work Experience",
-                      style: kHeaderStyler,
-                    ),
+                    Text("Work Experience",
+                        style: Responsive.isTablet(context)
+                            ? kHeaderStyler.copyWith(
+                                fontSize: calculateTextSize(30),
+                              )
+                            : Responsive.isMobile(context)
+                            ? kHeaderStyler.copyWith(
+                                fontSize: calculateTextSize(25),
+                              ): kHeaderStyler),
                     SizedBox(
                       height: Experiences.length *
                           getProportionateScreenHeight(100),
@@ -64,10 +79,15 @@ class AboutDesktop extends StatelessWidget {
                         },
                       ),
                     ),
-                    Text(
-                      "Education",
-                      style: kHeaderStyler,
-                    ),
+                    Text("Education",
+                        style: Responsive.isTablet(context)
+                            ? kHeaderStyler.copyWith(
+                                fontSize: calculateTextSize(30),
+                              )
+                            : Responsive.isMobile(context)
+                            ? kHeaderStyler.copyWith(
+                                fontSize: calculateTextSize(25),
+                              ): kHeaderStyler),
                     SizedBox(
                       height:
                           Education.length * getProportionateScreenHeight(100),
@@ -129,11 +149,16 @@ class Experience extends StatelessWidget {
             Text(
               // "Junior Web Developer",
               function,
-              style: kUnderHeaderStyle,
+              style: Responsive.isMobile(context)
+                              ? kUnderHeaderStyle.copyWith(
+                                  fontSize: calculateTextSize(12),
+                                )
+                              : kUnderHeaderStyle
+              // kUnderHeaderStyle,
             ),
             Container(
-                width: getProportionateScreenWidth(104),
-                height: getProportionateScreenHeight(34),
+                width:Responsive.isMobile(context)? getProportionateScreenWidth(150):getProportionateScreenWidth(104),
+                height:Responsive.isMobile(context)?getProportionateScreenHeight(25): getProportionateScreenHeight(34),
                 decoration: BoxDecoration(
                     color: kButtonSuccess,
                     borderRadius: BorderRadius.circular(25.0)),
@@ -141,7 +166,12 @@ class Experience extends StatelessWidget {
                     child: Text(
                   // 'Full Time',
                   type,
-                  style: kButtonStyle,
+                  style: Responsive.isMobile(context)
+                              ? kButtonStyle.copyWith(
+                                  fontSize: calculateTextSize(6),
+                                )
+                              : kButtonStyle
+                  // kButtonStyle,
                 ))),
           ],
         ),
@@ -155,14 +185,23 @@ class Experience extends StatelessWidget {
                 Text(
                   // "Dr. Rajkumar’s Learning App",
                   startup,
-                  style: kUnderStyle,
+                  style: Responsive.isMobile(context)
+                              ? kUnderStyle.copyWith(
+                                  fontSize: calculateTextSize(8),
+                                )
+                              : kUnderStyle
+                  // kUnderStyle,
                 ),
                 if (location!.isNotEmpty)
                   SvgPicture.asset("assets/icons/location.svg"),
                 Text(
                   // "JBengaluru",
                   location ?? "",
-                  style: kUnderStyle,
+                  style: Responsive.isMobile(context)
+                              ? kUnderStyle.copyWith(
+                                  fontSize: calculateTextSize(8),
+                                )
+                              : kUnderStyle
                 ),
               ],
             ),
@@ -172,7 +211,11 @@ class Experience extends StatelessWidget {
                 Text(
                   // "Sep 2021 - Dec 2021",
                   periode,
-                  style: kUnderStyle,
+                  style: Responsive.isMobile(context)
+                              ? kUnderStyle.copyWith(
+                                  fontSize: calculateTextSize(8),
+                                )
+                              : kUnderStyle
                 ),
               ],
             ),

@@ -19,7 +19,7 @@ import 'screens/main/main_screen.dart';
 Route<dynamic> routes(RouteSettings settings) {
   switch (settings.name) {
     case "/":
-      return _getPageRoute(MainScreen(), settings);
+      return _getPageRoute(const MainScreen(), settings);
     case "/About":
       return _getPageRoute(AboutScreen(), settings);
     case "/Contact":
@@ -27,11 +27,11 @@ Route<dynamic> routes(RouteSettings settings) {
     case "/Tech":
       return _getPageRoute(TechScreen(), settings);
     case "/Project":
-      return _getPageRoute(ProjectScreen(), settings);
+      return _getPageRoute(const ProjectScreen(), settings);
     // case ContactRoute:
     //   return _getPageRoute(const ContactView(), settings.name as String);
     default:
-      return _getPageRoute(MainScreen(), settings);
+      return _getPageRoute(const MainScreen(), settings);
   }
 }
 

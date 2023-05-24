@@ -6,6 +6,8 @@ import 'package:portfolio/model/project.dart';
 import 'package:portfolio/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../responsive.dart';
+
 class ProjectDesktop extends StatelessWidget {
   const ProjectDesktop({super.key});
 
@@ -28,7 +30,11 @@ class ProjectDesktop extends StatelessWidget {
                 children: [
                   Text(
                     "Projects",
-                    style: kHeaderStyler,
+                    style: Responsive.isTablet(context)
+                ? kHeaderStyler.copyWith(
+                    fontSize: calculateTextSize(30),
+                  )
+                : kHeaderStyler
                   ),
                   Text(
                     "Things I’ve built so far",

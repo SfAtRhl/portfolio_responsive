@@ -53,7 +53,7 @@ var kNavStylerHover = GoogleFonts.acme(
 ));
 var kUnderHeaderStyle = GoogleFonts.poppins(
   textStyle: TextStyle(
-    fontSize: calculateTextSize(18),
+    fontSize: calculateTextSize(16),
     fontWeight: FontWeight.w400,
     color: kDarkContent,
     // height: getProportionateScreenHeight(26),
@@ -93,7 +93,7 @@ var kProjectBoldStyle = TextStyle(
 );
 
 var aboutText =
-    "The Generator App is an online tool that helps you to export ready-made templates ready to work as your future website. It helps you to combine slides, panels and other components and export it as a set of static files: HTML/CSS/JS.";
+    "I am a passionate developer specializing in Flutter and Laravel, two powerful frameworks that enable me to bring ideas to life. With expertise in both frontend and backend development, I thrive in creating seamless and visually appealing user experiences. Through Flutter, I craft stunning cross-platform applications that work flawlessly on iOS and Android. Leveraging Laravel's robust capabilities, I build scalable and efficient backend systems, ensuring optimal performance and security. With a keen eye for detail and a commitment to delivering high-quality code, I strive to develop innovative solutions that meet the unique needs of every project. Let's collaborate and transform ideas into reality!";
 
 var iconColor = [
   const Color(0xFF171515),
@@ -102,9 +102,12 @@ var iconColor = [
 ];
 var socialMedia = [
   "https://github.com/SfAtRhl",
-  "https://twitter.com/",
+  "https://twitter.com/Akwaq007",
   "https://www.linkedin.com/in/soufyane-ait-rehail/",
 ];
 
 var linkedinImage =
     "https://media.licdn.com/dms/image/D4E03AQGPzJj2s84EnQ/profile-displayphoto-shrink_800_800/0/1673958003081?e=2147483647&v=beta&t=oaMIendwoW1HXGU87yl875L6LV2W7iV5ehtflZteG5A";
+var email = "sofyan.ait.rehail@gmail.com";
+var FigmaDesign =
+    "https://www.figma.com/file/FlWq9r9UlM44Y25gqQBoqh/Developer-Portfolio-Design-(Community)?type=design&node-id=0-1&t=hXx7ddtKO63UQfyI-0";
