@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/screens/project/components/Project_Desktop.dart';
 import '../../responsive.dart';
 import 'components/Project_Mobile.dart';
+import 'components/Project_Tablet.dart';
 
 class ProjectScreen extends StatelessWidget {
   static String routeName = "/Project";
@@ -43,6 +44,7 @@ class ProjectScreen extends StatelessWidget {
         //     ),
         //   ),
         // ),
+        tablet: ProjectTablet(),
         desktop: ProjectDesktop(),
       ),
     );

@@ -75,7 +75,7 @@ class LayoutTemplate extends StatelessWidget {
                   ),
                   if (!Responsive.isMobile(context))
                     Flexible(
-                      flex: Responsive.isDesktop(context) ? 3 : 6,
+                      flex: Responsive.isDesktop(context) ? 3 : 5,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -222,12 +222,12 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
         style: isHover
             ? Responsive.isTablet(context)
                 ? kNavStylerHover.copyWith(
-                    fontSize: calculateTextSize(15),
+                    fontSize: calculateTextSize(16),
                   )
                 : kNavStylerHover
             : Responsive.isTablet(context)
                 ? kNavStyler.copyWith(
-                    fontSize: calculateTextSize(15),
+                    fontSize: calculateTextSize(16),
                   )
                 : kNavStyler,
       ),

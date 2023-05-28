@@ -6,6 +6,8 @@ import 'package:portfolio/model/project.dart';
 import 'package:portfolio/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'Project_Desktop.dart';
+
 class ProjectMobile extends StatelessWidget {
   const ProjectMobile({super.key});
 
@@ -40,8 +42,8 @@ class ProjectMobile extends StatelessWidget {
           ),
           SizedBox(
             width: SizeConfig.screenWidth * 0.9,
-            height: SizeConfig.screenHeight * 0.68,
-            child: Projects.isNotEmpty
+            height: SizeConfig.screenHeight * 0.65,
+            child: !Projects.isNotEmpty
                 ? Center(
                     child: DefaultTextStyle(
                       style: kNavStyler,
@@ -87,7 +89,7 @@ class ProjectMobile extends StatelessWidget {
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.only(
-                                      top: getProportionateScreenWidth(220),
+                                      top: SizeConfig.screenHeight / 5.8,
                                       right: getProportionateScreenWidth(15),
                                       left: getProportionateScreenWidth(15),
                                     ),
@@ -118,60 +120,57 @@ class ProjectMobile extends StatelessWidget {
                                     bottom: 20,
                                     left: 10,
                                     child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        SizedBox(
-                                          width:
-                                              getProportionateScreenWidth(225),
-                                          child: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical:
-                                                    getProportionateScreenWidth(
-                                                        20)),
-                                            child: RichText(
-                                              text: TextSpan(
-                                                style: kProjectStyle,
-                                                children: <TextSpan>[
-                                                  TextSpan(
-                                                    text: 'Tech stack : ',
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          getProportionateScreenWidth(
-                                                              12),
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      color: kDarkColor,
-                                                    ),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              vertical:
+                                                  getProportionateScreenWidth(
+                                                      20)),
+                                          child: RichText(
+                                            text: TextSpan(
+                                              style: kProjectStyle.copyWith(fontSize: calculateTextSize(10)),
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                  text: 'Tech stack : ',
+                                                  style: TextStyle(
+                                                    fontSize:
+                                                        calculateTextSize(10),
+                                                    fontWeight: FontWeight.w700,
+                                                    color: kDarkColor,
                                                   ),
-                                                  TextSpan(
-                                                    text:
-                                                        // 'HTML , JavaScript, SASS, React',
-                                                        Projects[i].techStack,
-                                                  ),
-                                                ],
-                                              ),
+                                                ),
+                                                TextSpan(
+                                                  text:
+                                                      // 'HTML , JavaScript, SASS, React',
+                                                      Projects[i].techStack,
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ),
-                                        SizedBox(
-                                          // color: Colors.black12,
-                                          width:
-                                              getProportionateScreenWidth(225),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              linkView(
-                                                path: 'link',
-                                                title: 'Live Preview',
-                                                urlPath:
-                                                    Projects[i].livePreview,
-                                              ),
-                                              linkView(
-                                                path: 'github',
-                                                title: 'View Github',
-                                                urlPath: Projects[i].viewGithub,
-                                              ),
-                                            ],
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 5),
+                                          child: SizedBox(
+                                            width: SizeConfig.screenWidth / 2.2,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                linkView(
+                                                  path: 'link',
+                                                  title: 'Live Preview',
+                                                  urlPath:
+                                                      Projects[i].livePreview,
+                                                ),
+                                                linkView(
+                                                  path: 'github',
+                                                  title: 'View Github',
+                                                  urlPath: Projects[i].viewGithub,
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -218,79 +217,5 @@ class ProjectMobile extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class linkView extends StatefulWidget {
-  const linkView({
-    Key? key,
-    required this.path,
-    required this.title,
-    this.urlPath,
-  }) : super(key: key);
-
-  final String path;
-  final String title;
-  final String? urlPath;
-
-  @override
-  State<linkView> createState() => _linkViewState();
-}
-
-class _linkViewState extends State<linkView> {
-  bool isHover = false;
-  @override
-  Widget build(BuildContext context) {
-    SizeConfig().init(context);
-
-    return widget.urlPath != ""
-        ? InkWell(
-            onTap: () async {
-              const url = "https://pub.dev/packages/url_launcher/example";
-              if (await canLaunch("${widget.urlPath}")) {
-                await launch(
-                  "${widget.urlPath}",
-                );
-              } else {
-                throw 'Could not launch ${widget.urlPath}';
-              }
-            },
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            onHover: ((value) {
-              setState(() {
-                isHover = value;
-              });
-            }),
-            child: Row(
-              children: [
-                SvgPicture.asset(
-                  "assets/icons/${widget.path}.svg",
-                  color: isHover ? null : kDarkContent,
-                ),
-                SizedBox(
-                  width: getProportionateScreenWidth(5),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(
-                    bottom: 2, // Space between underline and text
-                  ),
-                  decoration: BoxDecoration(
-                      border: Border(
-                          bottom: BorderSide(
-                    color: isHover ? kDarkColor : kDarkContent,
-                    width: 1.0, // Underline thickness
-                  ))),
-                  child: Text(
-                    // " Live Preview",
-                    widget.title,
-                    style: isHover ? kProjectBoldStyle : kProjectStyle,
-                  ),
-                )
-              ],
-            ),
-          )
-        : const SizedBox();
   }
 }

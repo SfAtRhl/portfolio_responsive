@@ -33,7 +33,7 @@ var kHeaderStyler = GoogleFonts.poppins(
   ),
 );
 var kTechStack = TextStyle(
-  fontSize: getProportionateScreenWidth(12),
+  fontSize: calculateTextSize(12),
   fontWeight: FontWeight.w700,
   color: kDarkColor,
 );
@@ -85,7 +85,7 @@ var kProjectStyle = TextStyle(
   // height: getProportionateScreenHeight(26),
 );
 var kProjectBoldStyle = TextStyle(
-  fontSize: calculateTextSize(12),
+  fontSize: getProportionateScreenWidth(14),
   fontWeight: FontWeight.w700,
   color: kDarkColor,
   // decoration: TextDecoration.underline,

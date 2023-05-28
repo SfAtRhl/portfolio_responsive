@@ -8,8 +8,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../responsive.dart';
 
-class ProjectDesktop extends StatelessWidget {
-  const ProjectDesktop({super.key});
+class ProjectTablet extends StatelessWidget {
+  const ProjectTablet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +75,8 @@ class ProjectDesktop extends StatelessWidget {
                                 children: [
                                   Container(
                                     alignment: Alignment.center,
-                                    width: getProportionateScreenWidth(250),
-                                    height: getProportionateScreenWidth(400),
+                                    width: getProportionateScreenWidth(400),
+                                    height: getProportionateScreenWidth(550),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(25.0),
@@ -92,7 +92,7 @@ class ProjectDesktop extends StatelessWidget {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.only(
-                                        top: getProportionateScreenWidth(220),
+                                        top: getProportionateScreenWidth(310),
                                         right: getProportionateScreenWidth(15),
                                         left: getProportionateScreenWidth(15),
                                       ),
@@ -120,17 +120,20 @@ class ProjectDesktop extends StatelessWidget {
                                   ),
                                   Positioned(
                                       bottom: 20,
-                                      left: 10,
+                                      // left: 10,
                                       child: Column(
                                         children: [
                                           SizedBox(
                                             width: getProportionateScreenWidth(
-                                                225),
+                                                400),
                                             child: Padding(
                                               padding: EdgeInsets.symmetric(
                                                   vertical:
                                                       getProportionateScreenWidth(
-                                                          20)),
+                                                          20),
+                                                  horizontal:
+                                                      getProportionateScreenWidth(
+                                                          15)),
                                               child: RichText(
                                                 text: TextSpan(
                                                   style: kProjectStyle,
@@ -149,10 +152,10 @@ class ProjectDesktop extends StatelessWidget {
                                               ),
                                             ),
                                           ),
-                                          SizedBox(
+                                          Container(
                                             // color: Colors.black12,
                                             width: getProportionateScreenWidth(
-                                                225),
+                                                360),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
@@ -180,8 +183,8 @@ class ProjectDesktop extends StatelessWidget {
                                     left: 0,
                                     child: Container(
                                       alignment: Alignment.center,
-                                      width: getProportionateScreenWidth(250),
-                                      height: getProportionateScreenWidth(200),
+                                      width: getProportionateScreenWidth(400),
+                                      height: getProportionateScreenWidth(300),
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
@@ -198,7 +201,6 @@ class ProjectDesktop extends StatelessWidget {
                                 ],
                               ),
                             ),
-                         
                         ],
                       ),
                     ),
@@ -284,14 +286,24 @@ class _linkViewState extends State<linkView> {
                                   fontSize: calculateTextSize(10),
                                   color: kStrongDarkColor,
                                 )
-                              : kProjectBoldStyle.copyWith(
-                                  color: kStrongDarkColor)
+                              : Responsive.isTablet(context)
+                                  ? kProjectBoldStyle.copyWith(
+                                      fontSize: getProportionateScreenWidth(20),
+                                      color: kStrongDarkColor,
+                                    )
+                                  : kProjectBoldStyle.copyWith(
+                                      color: kStrongDarkColor)
                           : Responsive.isMobile(context)
                               ? kProjectBoldStyle.copyWith(
                                   fontSize: calculateTextSize(10),
                                   color: kDarkContent,
                                 )
-                              : kProjectBoldStyle.copyWith(color: kDarkContent)
+                              : Responsive.isTablet(context)
+                                  ? kProjectBoldStyle.copyWith(
+                                      fontSize: getProportionateScreenWidth(20),
+                                      color: kDarkContent,
+                                    )
+                                  :kProjectBoldStyle.copyWith(color: kDarkContent)
                       // : kProjectStyle,
                       ),
                 )

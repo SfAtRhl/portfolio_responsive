@@ -32,9 +32,10 @@ class AboutDesktop extends StatelessWidget {
                                 fontSize: calculateTextSize(30),
                               )
                             : Responsive.isMobile(context)
-                            ? kHeaderStyler.copyWith(
-                                fontSize: calculateTextSize(25),
-                              ): kHeaderStyler),
+                                ? kHeaderStyler.copyWith(
+                                    fontSize: calculateTextSize(25),
+                                  )
+                                : kHeaderStyler),
                     Padding(
                       padding: EdgeInsets.symmetric(
                           vertical: getProportionateScreenHeight(10)),
@@ -53,13 +54,15 @@ class AboutDesktop extends StatelessWidget {
                                 fontSize: calculateTextSize(30),
                               )
                             : Responsive.isMobile(context)
-                            ? kHeaderStyler.copyWith(
-                                fontSize: calculateTextSize(25),
-                              ): kHeaderStyler),
+                                ? kHeaderStyler.copyWith(
+                                    fontSize: calculateTextSize(25),
+                                  )
+                                : kHeaderStyler),
                     SizedBox(
                       height: Experiences.length *
                           getProportionateScreenHeight(100),
                       child: ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: Experiences.length,
                         separatorBuilder: (BuildContext context, int index) =>
                             const Divider(),
@@ -85,18 +88,19 @@ class AboutDesktop extends StatelessWidget {
                                 fontSize: calculateTextSize(30),
                               )
                             : Responsive.isMobile(context)
-                            ? kHeaderStyler.copyWith(
-                                fontSize: calculateTextSize(25),
-                              ): kHeaderStyler),
+                                ? kHeaderStyler.copyWith(
+                                    fontSize: calculateTextSize(25),
+                                  )
+                                : kHeaderStyler),
                     SizedBox(
                       height:
                           Education.length * getProportionateScreenHeight(100),
                       child: ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: Education.length,
                         separatorBuilder: (BuildContext context, int index) =>
                             const Divider(),
                         itemBuilder: (BuildContext context, int index) {
-                          // return Container();
                           return Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: getProportionateScreenHeight(10)),
@@ -147,32 +151,36 @@ class Experience extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              // "Junior Web Developer",
-              function,
-              style: Responsive.isMobile(context)
-                              ? kUnderHeaderStyle.copyWith(
-                                  fontSize: calculateTextSize(12),
-                                )
-                              : kUnderHeaderStyle
-              // kUnderHeaderStyle,
-            ),
+                // "Junior Web Developer",
+                function,
+                style: Responsive.isMobile(context)
+                    ? kUnderHeaderStyle.copyWith(
+                        fontSize: calculateTextSize(12),
+                      )
+                    : kUnderHeaderStyle
+                // kUnderHeaderStyle,
+                ),
             Container(
-                width:Responsive.isMobile(context)? getProportionateScreenWidth(150):getProportionateScreenWidth(104),
-                height:Responsive.isMobile(context)?getProportionateScreenHeight(25): getProportionateScreenHeight(34),
+                width: Responsive.isMobile(context)
+                    ? getProportionateScreenWidth(150)
+                    : getProportionateScreenWidth(104),
+                height: Responsive.isMobile(context)
+                    ? getProportionateScreenHeight(25)
+                    : getProportionateScreenHeight(34),
                 decoration: BoxDecoration(
                     color: kButtonSuccess,
                     borderRadius: BorderRadius.circular(25.0)),
                 child: Center(
                     child: Text(
-                  // 'Full Time',
-                  type,
-                  style: Responsive.isMobile(context)
-                              ? kButtonStyle.copyWith(
-                                  fontSize: calculateTextSize(6),
-                                )
-                              : kButtonStyle
-                  // kButtonStyle,
-                ))),
+                        // 'Full Time',
+                        type,
+                        style: Responsive.isMobile(context)
+                            ? kButtonStyle.copyWith(
+                                fontSize: calculateTextSize(6),
+                              )
+                            : kButtonStyle
+                        // kButtonStyle,
+                        ))),
           ],
         ),
         SizedBox(height: getProportionateScreenHeight(5)),
@@ -183,40 +191,38 @@ class Experience extends StatelessWidget {
               children: [
                 SvgPicture.asset("assets/icons/building.svg"),
                 Text(
-                  // "Dr. Rajkumar’s Learning App",
-                  startup,
-                  style: Responsive.isMobile(context)
-                              ? kUnderStyle.copyWith(
-                                  fontSize: calculateTextSize(8),
-                                )
-                              : kUnderStyle
-                  // kUnderStyle,
-                ),
+                    // "Dr. Rajkumar’s Learning App",
+                    startup,
+                    style: Responsive.isMobile(context)
+                        ? kUnderStyle.copyWith(
+                            fontSize: calculateTextSize(8),
+                          )
+                        : kUnderStyle
+                    // kUnderStyle,
+                    ),
                 if (location!.isNotEmpty)
                   SvgPicture.asset("assets/icons/location.svg"),
                 Text(
-                  // "JBengaluru",
-                  location ?? "",
-                  style: Responsive.isMobile(context)
-                              ? kUnderStyle.copyWith(
-                                  fontSize: calculateTextSize(8),
-                                )
-                              : kUnderStyle
-                ),
+                    // "JBengaluru",
+                    location ?? "",
+                    style: Responsive.isMobile(context)
+                        ? kUnderStyle.copyWith(
+                            fontSize: calculateTextSize(8),
+                          )
+                        : kUnderStyle),
               ],
             ),
             Row(
               children: [
                 SvgPicture.asset("assets/icons/date.svg"),
                 Text(
-                  // "Sep 2021 - Dec 2021",
-                  periode,
-                  style: Responsive.isMobile(context)
-                              ? kUnderStyle.copyWith(
-                                  fontSize: calculateTextSize(8),
-                                )
-                              : kUnderStyle
-                ),
+                    // "Sep 2021 - Dec 2021",
+                    periode,
+                    style: Responsive.isMobile(context)
+                        ? kUnderStyle.copyWith(
+                            fontSize: calculateTextSize(8),
+                          )
+                        : kUnderStyle),
               ],
             ),
           ],

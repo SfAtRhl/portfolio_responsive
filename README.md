@@ -1,16 +1,10 @@
-# portfolio
+# Flutter Responsive Portfolio (PWA)
 
-A new Flutter project.
+<!-- #### This is a static page for a Business Landing Page. -->
 
-## Getting Started
+#### Feel Free to add or modifier anything you want.
 
-This project is a starting point for a Flutter application.
+##### [Design Lien](https://www.figma.com/community/file/1116246660507537002/Developer-Portfolio-Design) | [Web Lien](https://ait-rehail-soufyane.web.app/#/)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Alt text](1.png?raw=true)
+![Alt text](2.png?raw=true)
