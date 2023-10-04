@@ -59,15 +59,16 @@ class AboutDesktop extends StatelessWidget {
                                   )
                                 : kHeaderStyler),
                     SizedBox(
+                      // width: double.infinity,
+                      // height: double.infinity,
                       height: Experiences.length *
                           getProportionateScreenHeight(100),
                       child: ListView.separated(
-                        physics: const NeverScrollableScrollPhysics(),
+                        // physics: const NeverScrollableScrollPhysics(),
                         itemCount: Experiences.length,
                         separatorBuilder: (BuildContext context, int index) =>
                             const Divider(),
                         itemBuilder: (BuildContext context, int index) {
-                          // return Container();
                           return Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: getProportionateScreenHeight(10)),
@@ -162,7 +163,7 @@ class Experience extends StatelessWidget {
                 ),
             Container(
                 width: Responsive.isMobile(context)
-                    ? getProportionateScreenWidth(150)
+                    ? getProportionateScreenWidth(200)
                     : getProportionateScreenWidth(104),
                 height: Responsive.isMobile(context)
                     ? getProportionateScreenHeight(25)
@@ -176,7 +177,7 @@ class Experience extends StatelessWidget {
                         type,
                         style: Responsive.isMobile(context)
                             ? kButtonStyle.copyWith(
-                                fontSize: calculateTextSize(6),
+                                fontSize: calculateTextSize(8),
                               )
                             : kButtonStyle
                         // kButtonStyle,

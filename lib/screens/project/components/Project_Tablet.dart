@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -110,7 +112,6 @@ class ProjectTablet extends StatelessWidget {
                                                         15)),
                                             child: Text(
                                               Projects[i].description,
-                                              // "This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content",
                                               style: kProjectStyle,
                                             ),
                                           ),
@@ -152,7 +153,7 @@ class ProjectTablet extends StatelessWidget {
                                               ),
                                             ),
                                           ),
-                                          Container(
+                                          SizedBox(
                                             // color: Colors.black12,
                                             width: getProportionateScreenWidth(
                                                 360),
@@ -235,7 +236,6 @@ class _linkViewState extends State<linkView> {
     return widget.urlPath != ""
         ? InkWell(
             onTap: () async {
-              const url = "https://pub.dev/packages/url_launcher/example";
               if (await canLaunch("${widget.urlPath}")) {
                 await launch(
                   "${widget.urlPath}",
@@ -303,7 +303,8 @@ class _linkViewState extends State<linkView> {
                                       fontSize: getProportionateScreenWidth(20),
                                       color: kDarkContent,
                                     )
-                                  :kProjectBoldStyle.copyWith(color: kDarkContent)
+                                  : kProjectBoldStyle.copyWith(
+                                      color: kDarkContent)
                       // : kProjectStyle,
                       ),
                 )

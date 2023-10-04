@@ -20,7 +20,7 @@ import '../../services/navigation_service.dart';
 class LayoutTemplate extends StatelessWidget {
   const LayoutTemplate({Key? key, required this.child}) : super(key: key);
   final Widget child;
-    static GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  static GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,41 +34,10 @@ class LayoutTemplate extends StatelessWidget {
         child: Column(
           children: <Widget>[
             SizedBox(
-              // color: Colors.black,
               height: getProportionateScreenHeight(90),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  // Container(
-                  //   height: getProportionateScreenHeight(100),
-                  //   width: getProportionateScreenWidth(Responsive.isMobile(context)?170:110),
-                  //   child: Center(
-                  //     child: ShaderMask(
-                  //         blendMode: BlendMode.srcIn,
-                  //         shaderCallback: (bounds) =>
-                  //             const LinearGradient(colors: [
-                  //               //Gradient
-                  //               Color(0xFF00C0FD),
-                  //               Color(0xFFE70FAA),
-                  //             ]).createShader(
-                  //               Rect.fromLTWH(
-                  //                   0, 0, bounds.width, bounds.height),
-                  //             ),
-                  //         child: RichText(
-                  //           text: const TextSpan(
-                  //             style:
-                  //                 TextStyle(color: Colors.black, fontSize: 36),
-                  //             children: <TextSpan>[
-                  //               TextSpan(
-                  //                   text: '{007}',
-                  //                   style: TextStyle(color: Colors.blue)),
-                  //               TextSpan(text: 'AtRhl'),
-                  //             ],
-                  //           ),
-                  //           textScaleFactor: 0.5,
-                  //         )),
-                  //   ),
-                  // ),
                   const Flexible(
                     flex: 2,
                     child: SizedBox(),
@@ -238,9 +207,8 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
       },
       onTap: () {
         locator<NavigationService>().navigateTo(widget.path);
-       LayoutTemplate. scaffoldKey.currentState!.closeDrawer();
-      // Navigator.pop(context);
-
+        LayoutTemplate.scaffoldKey.currentState!.closeDrawer();
+        // Navigator.pop(context);
       },
     );
   }

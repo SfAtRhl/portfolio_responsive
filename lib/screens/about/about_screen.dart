@@ -4,17 +4,14 @@ import '../../responsive.dart';
 
 class AboutScreen extends StatelessWidget {
   static String routeName = "/About";
+
+  const AboutScreen({super.key});
   @override
   Widget build(BuildContext context) {
     // It provide us the width and height
-    Size size = MediaQuery.of(context).size;
-    return Scaffold(
+    return const Scaffold(
       body: Responsive(
-        // Let's work on our mobile part
-        // mobile: Container(
-        //   color: Colors.blue.shade800,
-        // ),
-        desktop: const AboutDesktop(),
+        desktop: AboutDesktop(),
       ),
     );
   }

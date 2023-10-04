@@ -25,15 +25,14 @@ class TechDesktop extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "My Tech Stack",
-                    style: Responsive.isTablet(context)
-                ? kHeaderStyler.copyWith(
-                    fontSize: calculateTextSize(30),
-                  )
-                : kHeaderStyler
-                    // kHeaderStyler,
-                  ),
+                  Text("My Tech Stack",
+                      style: Responsive.isTablet(context)
+                          ? kHeaderStyler.copyWith(
+                              fontSize: calculateTextSize(30),
+                            )
+                          : kHeaderStyler
+                      // kHeaderStyler,
+                      ),
                   Text(
                     " Technologies I’ve been working with recently",
                     style: kUnderHeaderStyle,
@@ -52,7 +51,7 @@ class TechDesktop extends StatelessWidget {
                 children: [
                   // for (int i = 1; i <= 12; i++)
 
-                  for (int i = 1; i <= 12; i++)
+                  for (int i = 1; i <= 16; i++)
                     SvgPicture.asset(
                       "assets/icons/technologies/$i.svg",
                       height: getProportionateScreenWidth(

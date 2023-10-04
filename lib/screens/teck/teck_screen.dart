@@ -4,17 +4,15 @@ import '../../responsive.dart';
 
 class TechScreen extends StatelessWidget {
   static String routeName = "/Tech";
+
+  const TechScreen({super.key});
   @override
   Widget build(BuildContext context) {
     // It provide us the width and height
-    Size size = MediaQuery.of(context).size;
-    return Scaffold(
+    return const Scaffold(
       body: Responsive(
-          // Let's work on our mobile part
-          // mobile: Container(
-          //   color: Colors.blue.shade800,
-          // ),
-          desktop: TechDesktop(),),
+        desktop: TechDesktop(),
+      ),
     );
   }
 }

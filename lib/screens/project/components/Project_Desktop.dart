@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,7 +46,7 @@ class ProjectDesktop extends StatelessWidget {
           ),
           SizedBox(
             // color: Colors.red,
-            height: getProportionateScreenHeight(550),
+            height: getProportionateScreenHeight(600),
             child: !Projects.isNotEmpty
                 ? Center(
                     child: DefaultTextStyle(
@@ -61,145 +63,170 @@ class ProjectDesktop extends StatelessWidget {
                   )
                 : Padding(
                     padding: EdgeInsets.all(getProportionateScreenWidth(20)),
-                    child: SingleChildScrollView(
-                      child: Wrap(
-                        // runAlignment : WrapAlignment.center,
-                        // crossAxisAlignment : WrapCrossAlignment.center,
-                        spacing: getProportionateScreenWidth(50),
-                        runSpacing: getProportionateScreenWidth(30),
-                        children: [
-                          for (int i = 0; i < Projects.length; i++)
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    alignment: Alignment.center,
-                                    width: getProportionateScreenWidth(250),
-                                    height: getProportionateScreenWidth(400),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.8),
-                                          spreadRadius: 0.5,
-                                          blurRadius: 5,
-                                          offset: const Offset(0.1,
-                                              0.5), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                        top: getProportionateScreenWidth(220),
-                                        right: getProportionateScreenWidth(15),
-                                        left: getProportionateScreenWidth(15),
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            Projects[i].title,
-                                            // "Project Tile goes here",
-                                            style: kHeaderProjectStyle,
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical:
-                                                    getProportionateScreenWidth(
-                                                        15)),
-                                            child: Text(
-                                              Projects[i].description,
-                                              // "This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content",
-                                              style: kProjectStyle,
-                                            ),
+                    child: ScrollConfiguration(
+                      behavior: ScrollConfiguration.of(context)
+                          .copyWith(scrollbars: false),
+                      child: SingleChildScrollView(
+                        child: Wrap(
+                          spacing: getProportionateScreenWidth(50),
+                          runSpacing: getProportionateScreenWidth(30),
+                          children: [
+                            for (int i = 0; i < Projects.length; i++)
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.center,
+                                      width: getProportionateScreenWidth(250),
+                                      height: getProportionateScreenWidth(400),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(25.0),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.5),
+                                            spreadRadius: 0.5,
+                                            blurRadius: 5,
+                                            offset: const Offset(0.1,
+                                                0.5), // changes position of shadow
                                           ),
                                         ],
                                       ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                      bottom: 20,
-                                      left: 10,
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            width: getProportionateScreenWidth(
-                                                225),
-                                            child: Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical:
-                                                      getProportionateScreenWidth(
-                                                          20)),
-                                              child: RichText(
-                                                text: TextSpan(
-                                                  style: kProjectStyle,
-                                                  children: <TextSpan>[
-                                                    TextSpan(
-                                                      text: 'Tech stack : ',
-                                                      style: kTechStack,
-                                                    ),
-                                                    TextSpan(
-                                                      text:
-                                                          // 'HTML , JavaScript, SASS, React',
-                                                          Projects[i].techStack,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            // color: Colors.black12,
-                                            width: getProportionateScreenWidth(
-                                                225),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                          top: getProportionateScreenWidth(220),
+                                          bottom:
+                                              getProportionateScreenHeight(10),
+                                          right:
+                                              getProportionateScreenWidth(15),
+                                          left: getProportionateScreenWidth(15),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Column(
                                               children: [
-                                                linkView(
-                                                  path: 'link',
-                                                  title: 'Live Preview',
-                                                  urlPath:
-                                                      Projects[i].livePreview,
+                                                Text(
+                                                  Projects[i].title,
+                                                  style: kHeaderProjectStyle,
                                                 ),
-                                                linkView(
-                                                  path: 'github',
-                                                  title: 'View Github',
-                                                  urlPath:
-                                                      Projects[i].viewGithub,
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      vertical:
+                                                          getProportionateScreenWidth(
+                                                              15)),
+                                                  child: Text(
+                                                    Projects[i].description,
+                                                    style:
+                                                        kProjectStyle.copyWith(
+                                                      fontSize:
+                                                          calculateTextSize(12),
+                                                    ),
+                                                  ),
                                                 ),
                                               ],
                                             ),
-                                          ),
-                                        ],
-                                      )),
-                                  Positioned(
-                                    top: 0,
-                                    left: 0,
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      width: getProportionateScreenWidth(250),
-                                      height: getProportionateScreenWidth(200),
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: AssetImage(
-                                            Projects[i].imageAsset,
-                                          ),
-                                          fit: BoxFit.fill,
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      vertical:
+                                                          getProportionateScreenWidth(
+                                                              10)),
+                                                  child: RichText(
+                                                    text: TextSpan(
+                                                      style: kProjectStyle.copyWith(
+                                                          fontSize:
+                                                              calculateTextSize(
+                                                                  10)),
+                                                      children: <TextSpan>[
+                                                        TextSpan(
+                                                          text: 'Tech stack : ',
+                                                          style: TextStyle(
+                                                            fontSize:
+                                                                calculateTextSize(
+                                                                    12),
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            color: kDarkColor,
+                                                          ),
+                                                        ),
+                                                        TextSpan(
+                                                          text:
+                                                              // 'HTML , JavaScript, SASS, React',
+                                                              Projects[i]
+                                                                  .techStack,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 5),
+                                                  child: SizedBox(
+                                                    width: double.infinity,
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        linkView(
+                                                          path: 'link',
+                                                          title: 'Live Preview',
+                                                          urlPath: Projects[i]
+                                                              .livePreview,
+                                                        ),
+                                                        linkView(
+                                                          path: 'github',
+                                                          title: 'View Github',
+                                                          urlPath: Projects[i]
+                                                              .viewGithub,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
-                                        borderRadius: const BorderRadius.only(
-                                            topRight: Radius.circular(25.0),
-                                            topLeft: Radius.circular(25.0)),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Positioned(
+                                      top: 0,
+                                      left: 0,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        width: getProportionateScreenWidth(250),
+                                        height:
+                                            getProportionateScreenWidth(200),
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image: AssetImage(
+                                              Projects[i].imageAsset,
+                                            ),
+                                            fit: BoxFit.fill,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                              topRight: Radius.circular(25.0),
+                                              topLeft: Radius.circular(25.0)),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                         
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -233,7 +260,6 @@ class _linkViewState extends State<linkView> {
     return widget.urlPath != ""
         ? InkWell(
             onTap: () async {
-              const url = "https://pub.dev/packages/url_launcher/example";
               if (await canLaunch("${widget.urlPath}")) {
                 await launch(
                   "${widget.urlPath}",
